@@ -34,7 +34,7 @@ class RBStopwatchExtension(Extension):
             "rbstopwatch/activity_monitor.html", [
                 'view_diff', 
                 'view_diff_revision', 
-                'view_screenshot',
+                'screenshot',
             ]
         )
         
@@ -42,7 +42,7 @@ class RBStopwatchExtension(Extension):
             "rbstopwatch/mousewheel_lib.html", [
                 'view_diff',
                 'view_diff_revision',
-                'view_screenshot',
+                'screenshot',
             ]
         )
         

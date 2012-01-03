@@ -21,5 +21,6 @@ class RBStatsExtension(Extension):
     def __init__(self):
         Extension.__init__(self)
         self.dashboard_hook = RBStatsDashboardHook(self)
+        self.dashboard_hook.entries = self.dashboard_hook.get_entries()
         self.url_hook = URLHook(self, patterns('',
             (r'^rbstats/', include('rbstats.urls'))))
