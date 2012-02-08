@@ -7,7 +7,7 @@ setup(
     name=PACKAGE,
     version=VERSION,
     description="""Review lines extension for Review Board""",
-    author="Richard",
+    author="Wang Weijia",
     packages=["rbreviewlines"],
     entry_points={
         'reviewboard.extensions':

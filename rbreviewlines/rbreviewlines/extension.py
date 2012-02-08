@@ -20,3 +20,6 @@ class RBReviewLinesExtension(Extension):
     def __init__(self):
         Extension.__init__(self)
         self.dashboard_hook = RBReviewLinesDashboardHook(self)
+        # The following line must be added for extension to show an entry
+        # in the left side of dashboard
+        self.dashboard_hook.entries = self.dashboard_hook.get_entries()
