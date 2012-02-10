@@ -4,6 +4,7 @@ from django.conf.urls.defaults import patterns, include
 from reviewboard.extensions.base import Extension
 from reviewboard.extensions.hooks import DashboardHook, URLHook
 from reviewboard.extensions.hooks import ChunkGenerationCompleteHook
+from models import ChangeInfoForFileDiff
 
 class RBReviewLinesDashboardHook(DashboardHook):
     def get_entries(self):
@@ -13,10 +14,13 @@ class RBReviewLinesDashboardHook(DashboardHook):
         }]
 
 class RBReviewLinesChunkGenerationCompleteHook(ChunkGenerationCompleteHook):
-    def processChunks(self, chunks):
-        #print chunks
+    def processChunks(self, file_diff, chunks):
+        print '-----------------------------------', file_diff
+        print ChangeInfoForFileDiff.objects.get_or_create(file_diff = file_diff,
+                    mod_line = 0, del_line = 0)
         for i in chunks:
-            print '-----------------------------------', i
+            #print '-----------------------------------', i
+            pass
         
 class RBReviewLinesExtension(Extension):
     is_configurable = True
@@ -30,3 +34,4 @@ class RBReviewLinesExtension(Extension):
         self.dashboard_hook.entries = self.dashboard_hook.get_entries()
         self.chunkProcessHook = RBReviewLinesChunkGenerationCompleteHook(self)
         print self.chunkProcessHook.hooks
+        
